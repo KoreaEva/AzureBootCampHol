@@ -179,19 +179,19 @@ Azure Functions을 사용했을 때 단시간에 급격히 증가하는 트래�
 
 먼저 Queue를 추가할 Storage Accout를 먼저 생성한다. 
 
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0023.png)<br>
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0024.png)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/02/0023.png)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/02/0024.png)<br>
 
 Queue를 5개 생성한다. 
 
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0025.png)<br>
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0026.png)<br>
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0027.png)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/02/0025.png)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/02/0026.png)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/02/0027.png)<br>
 
 Queue에 값을 저장하기 위한 더미 앱을 생성한다. 이때 Windwos.Azure.Storage NuGet 패키지를 설치해준다. 
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0028.png)<br>
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0029.png)<br>
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0030.png)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/02/0028.png)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/02/0029.png)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/02/0030.png)<br>
 
 프로젝트가 생성되고 나면 우선 반복으로 Timer 객체를 이용해서 반복 동작할 수 있는 구조를 만들어야 합니다. 먼저 타이머를 사용할 수 있게 program.cs 파일에 namespace를 추가해야 합니다.
 
@@ -408,6 +408,36 @@ namespace GabFunc
 
 EventHub는 HTTP 혹은 AMQP로 오는 요청을 처리할 수 서비스로 폭주하는 서비스를 감당할 수 있게 잘 설계 되어 있을 뿐만 아니라 자체적인 Partition을 가지고 있어서 데이터를 손실 없이 두 단의 작업으로 연계 할 수 있다. 
  여기서는 EventHub에 데이터가 들어 올 때 마다 EventHub Trigger를 사용해서 CosmosDB에 저장하는 코드를 작성한다. 
+
+ 먼저 EventHub를 추가한다. 
+
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/03/0002.png)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/03/0003.png)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/03/0005.png)<br>
+
+두번째로 Event Hub에 데이터를 전송하기 위해서 미리 만들어 둔 Dummy 소스에 Microsoft.Azure.EventHubs를 추가한다. 
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/03/0004.png)<br>
+
+ ![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/03/0001.png)<br>
+ 
+ 멤버 변수에 EventHub Client를 정의한다. 
+
+```csharp
+private static string connectionString = "Endpoint=sb://gabevent.servicebus.windows.net/;SharedAccessKeyName=sender;SharedAccessKey=3lkOuu76JQwTpDqT+u6jPQa6nxjksvLzsJm6jxxZJTA=;EntityPath=gabhub";
+private static EventHubClient eventHubClient = eventHubClient = EventHubClient.CreateFromConnectionString(connectionString);
+````
+
+데이터를 전송하는 코드만 입력한다.
+
+```csharp
+            //EventHub에 넣는 부분
+            await eventHubClient.SendAsync(new EventData(Encoding.UTF8.GetBytes(json)));
+```
+
+그리고 마지막으로 ConnectionString을 설정한다. 
+ 
+ ![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/03/0006.png)<br>
+ ![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/03/0007.png)<br>
 
 ### 4. EventHub를 통해 들어온 데이터의 관리
 
