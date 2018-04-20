@@ -15,43 +15,43 @@ Storage Explorer [https://azure.microsoft.com/en-us/features/storage-explorer/](
 
 먼저 리소스 그룹을 만든다.
 
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0001.PNG)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0001.png)<br>
 
 리소스 그룹이 완성되면 Azure Functions를 추가한다. 
 
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0002.PNG)<br>
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0003.PNG)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0002.png)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0003.png)<br>
 
 Visual Studio에서 새로운 Azure Functions 프로젝트를 추가한다. 이때 .NET Framework 버전을 선택하고 Azure Functions를 만들때 추가 되어 있는 Storage를 선택한다. 
 
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0006.PNG)<br>
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0008.PNG)<br>
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0007.PNG)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0006.png)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0008.png)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0007.png)<br>
 
 새 Azure 함수를 추가한다. 이때 Trigger는 Http Trigger를 선택한다. 그리고 접근 권한은 Anonymous를 선택한다. 
 
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0004.PNG)<br>
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0005.PNG)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0004.png)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0005.png)<br>
 
 새로운 함수가 추가되면 바로 추가 되어 있는 샘플 코드를 실행한다. 그리고 출력되는 주소로 Postman을 이용해서 접속해서 테스트 한다. 
 
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0009.PNG)<br>
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0010.PNG)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0009.png)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0010.png)<br>
 
 이제 데이터를 저장할 Cosmos DB를 생성한다. 
 
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0011.PNG)<br>
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0012.PNG)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0011.png)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0012.png)<br>
 
 CosmosDB가 잘 추가 되었다면 새로운 컬랙션을 추가한다. 
 
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0013.PNG)<br>
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0014.PNG)<br>
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0015.PNG)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0013.png)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0014.png)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0015.png)<br>
 
 다시 Visual Studio로 돌아와서 NuGet 패키지를 추가하는데 Microsoft.Azure.DocumentDB를 찾아서 추가한다.
 
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0016.PNG)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0016.png)<br>
 
 필요한 네임스페이스를 추가한다. 
 
@@ -122,7 +122,7 @@ Run()과 generateID() 메소드를 추가한다.
 
 필요한 Entity class를 추가한다. 
 
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0017.PNG)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0017.png)<br>
 
 ```csharp
 using System;
@@ -159,17 +159,17 @@ namespace GabFunc
 
 다시 포스트맨으로 접속해서 JSON 코드를 입력해 본다.
 
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0018.PNG)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0018.png)<br>
 
 문제가 없으면 직접 배포해 본다. 
 
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0019.PNG)<br>
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0020.PNG)<br>
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0021.PNG)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0019.png)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0020.png)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0021.png)<br>
 
 배포가 끝나고 나면 Application setting 값을 마지막으로 옮겨준다. 
 
-![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0022.PNG)<br>
+![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/01/0022.png)<br>
 
 
 ## 2. Azure Storage에서 제공하는 Queue를 사용한 처리
