@@ -13,5 +13,15 @@
 Azure Functions을 사용했을 때 단시간에 급격히 증가하는 트래픽을 어떻게 처리 할 것인가를 고민 할때 또 하나의 해결 방법은 Azure Functions 앞에 Queue를 두는 방법입니다. Queue는 최대 1초 2000개의 요청을 소화 할 수 있기 때문에 넉넉하게 10개의 Queue를 만들고 Random하게 Queue를 선택해서 보낸다면 충분히 트래픽을 소화 할 수 있을 것으로 기대 된다. 
  단 이때 Queue 개수가 많아지면 관리가 점점 어려워지는 문제가 있지만 비교적 저렴한 비용으로 충분한 성능을 얻을 수 있는 장점이 있다. 
 
+## 3. EventHub의 사용
+
 ![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/a3.PNG)<br>
+
+EventHub는 HTTP 혹은 AMQP로 오는 요청을 처리할 수 서비스로 폭주하는 서비스를 감당할 수 있게 잘 설계 되어 있을 뿐만 아니라 자체적인 Partition을 가지고 있어서 데이터를 손실 없이 두 단의 작업으로 연계 할 수 있다. 
+ 여기서는 EventHub에 데이터가 들어 올 때 마다 EventHub Trigger를 사용해서 CosmosDB에 저장하는 코드를 작성한다. 
+
+### 4. EventHub를 통해 들어온 데이터의 관리
+
 ![Azure Functions](https://github.com/KoreaEva/AzureBootCampHol/blob/master/images/a4.PNG)<br>
+
+EventHub를 통해서 수집된 데이터를 백업하고 일정 시간이 지난 데이터를 삭제하는 등 데이터를 관리하는 방법을 살펴 본다. 
